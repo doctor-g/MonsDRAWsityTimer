@@ -25,14 +25,19 @@ __meta__ = {
 }
 
 [node name="StartButton" type="Button" parent="VBoxContainer"]
+margin_top = 109.0
 margin_right = 45.0
-margin_bottom = 20.0
+margin_bottom = 129.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
 text = "Start!"
 
 [node name="TimeRemaining" type="Label" parent="VBoxContainer"]
-margin_top = 24.0
+margin_top = 354.0
 margin_right = 45.0
-margin_bottom = 38.0
+margin_bottom = 368.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
 text = "0:00"
 align = 1
 
