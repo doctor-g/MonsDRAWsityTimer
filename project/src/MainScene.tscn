@@ -26,8 +26,8 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-studyDuration = 5
-drawDuration = 10
+study_duration = 3
+draw_duration = 5
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )

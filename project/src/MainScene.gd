@@ -1,79 +1,79 @@
 extends Control
 
 enum State {
-	NONE, STUDY, DRAW
+	NONE, STUDY, DRAW, PAUSED
 }
 
-export var studyDuration := 20
-export var drawDuration := 120
+export var study_duration := 20
+export var draw_duration := 120
 
-var _secondsRemaining : int = 0
+var _seconds_remaining : int = 0 setget _set_seconds_remaining
 var _state = State.NONE
 
-onready var _startButton := $VBoxContainer/StartButton
+onready var _start_button := $VBoxContainer/StartButton
 onready var _timer := $Timer
-onready var _timeRemainingLabel := $VBoxContainer/TimeRemaining
+onready var _time_remaining_label := $VBoxContainer/TimeRemaining
 onready var _beepPlayer := $AudioStreamPlayer
-onready var _cancelButton := $VBoxContainer/CancelButton
-onready var _pauseButton := $VBoxContainer/PauseButton
+onready var _cancel_button := $VBoxContainer/CancelButton
+onready var _pause_button := $VBoxContainer/PauseButton
+onready var _animation_player := $AnimationPlayer
+
 
 func _on_StartButton_pressed():
-	_startButton.disabled = true
-	_cancelButton.disabled = false
-	_pauseButton.disabled = false
+	_start_button.disabled = true
+	_cancel_button.disabled = false
+	_pause_button.disabled = false
 	_state = State.STUDY
-	_secondsRemaining = studyDuration
-	_timeRemainingLabel.text = _formatSecondsRemaining()
+	self._seconds_remaining = study_duration
 	_timer.start(1)
 	 # In case the timer was previously paused, make sure to unpause it.
 	_timer.paused = false
 
 
+func _set_seconds_remaining(value):
+	_seconds_remaining = value
+	_update_time_remaining_label()
+
+
+func _update_time_remaining_label()->void:
+	var label_text := "%d:%02d" % [_seconds_remaining / 60, _seconds_remaining % 60]
+	_time_remaining_label.text = label_text
+	
+
 func _on_Timer_timeout():
-	_secondsRemaining -= 1
-	_timeRemainingLabel.text = _formatSecondsRemaining()
-	if _secondsRemaining == 0:
+	self._seconds_remaining -= 1
+	if _seconds_remaining == 0:
 		_beepPlayer.play()
 		match _state:
 			State.STUDY:
-				_secondsRemaining = drawDuration
-				_timeRemainingLabel.text = _formatSecondsRemaining()
+				self._seconds_remaining = draw_duration
 				_state = State.DRAW
 			State.DRAW:
-				_startButton.disabled = false
-				_pauseButton.disabled = true
+				_start_button.disabled = false
+				_pause_button.disabled = true
 				_state = State.NONE
-				_cancelButton.disabled = true
+				_cancel_button.disabled = true
 				_timer.stop()
 
 
-func _formatSecondsRemaining() -> String:
-	var result := ''
-	result += str(_secondsRemaining / 60)
-	result += ":"
-	result += "%02d" % (_secondsRemaining % 60)
-	return result;
-
-
 func _on_CancelButton_pressed():
-	_state = State.NONE
-	_secondsRemaining = studyDuration
+	self._seconds_remaining = study_duration
 	_timer.stop()
-	_startButton.disabled = false
-	_cancelButton.disabled = true
-	_timeRemainingLabel.text = _formatSecondsRemaining()
-	_pauseButton.disabled = true
+	_start_button.disabled = false
+	_cancel_button.disabled = true
+	_pause_button.disabled = true
 	_stop_blink_animation()
 
 
 func _on_PauseButton_pressed():
-	_timer.paused = not _timer.paused
 	if _timer.paused:
-		$AnimationPlayer.play("blink")
-	else:
+		_timer.paused = false
 		_stop_blink_animation()
+	else:
+		_timer.paused = true
+		_animation_player.play("blink")
 
 		
 func _stop_blink_animation():
-	$AnimationPlayer.seek(0, true)
-	$AnimationPlayer.stop()
+	_animation_player.seek(0, true)
+	_animation_player.stop()
