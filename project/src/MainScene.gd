@@ -12,12 +12,17 @@ var _state = State.NONE
 
 onready var _start_button := $VBoxContainer/StartButton
 onready var _timer := $Timer
-onready var _time_remaining_label := $VBoxContainer/TimeRemaining
+onready var _time_remaining_label := $TimeRemaining
 onready var _beepPlayer := $AudioStreamPlayer
 onready var _cancel_button := $VBoxContainer/CancelButton
 onready var _pause_button := $VBoxContainer/PauseButton
 onready var _animation_player := $AnimationPlayer
 
+
+func _ready():
+	_seconds_remaining = study_duration
+	_update_time_remaining_label()
+	
 
 func _on_StartButton_pressed():
 	_start_button.disabled = true
