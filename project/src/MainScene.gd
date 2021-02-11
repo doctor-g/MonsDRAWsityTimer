@@ -18,8 +18,13 @@ onready var _cancel_button := $VBoxContainer/CancelButton
 onready var _pause_button := $VBoxContainer/PauseButton
 onready var _animation_player := $AnimationPlayer
 
+onready var _ready_label := $StatusRow/ReadyLabel
+onready var _study_label := $StatusRow/StudyLabel
+onready var _draw_label := $StatusRow/DrawLabel
+
 
 func _ready():
+	_ready_label.focus = true
 	_seconds_remaining = study_duration
 	_update_time_remaining_label()
 	
@@ -31,6 +36,8 @@ func _on_StartButton_pressed():
 	_state = State.STUDY
 	self._seconds_remaining = study_duration
 	_timer.start(1)
+	_ready_label.focus = false
+	_study_label.focus = true
 	 # In case the timer was previously paused, make sure to unpause it.
 	_timer.paused = false
 
@@ -53,11 +60,15 @@ func _on_Timer_timeout():
 			State.STUDY:
 				self._seconds_remaining = draw_duration
 				_state = State.DRAW
+				_study_label.focus = false
+				_draw_label.focus = true
 			State.DRAW:
 				_start_button.disabled = false
 				_pause_button.disabled = true
 				_state = State.NONE
 				_cancel_button.disabled = true
+				_draw_label.focus = false
+				_ready_label.focus = true
 				_timer.stop()
 
 

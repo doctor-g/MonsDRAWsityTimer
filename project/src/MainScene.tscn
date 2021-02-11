@@ -4,7 +4,7 @@
 [ext_resource path="res://src/MainScene.gd" type="Script" id=2]
 [ext_resource path="res://assets/fonts/CourierPrime-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/fonts/button_font.tres" type="DynamicFont" id=4]
-[ext_resource path="res://assets/fonts/top_text_font.tres" type="DynamicFont" id=5]
+[ext_resource path="res://src/AnimatedLabel.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "blink"
@@ -108,7 +108,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="StatusRow" type="HBoxContainer" parent="."]
 anchor_right = 1.0
 margin_bottom = 61.0
 grow_horizontal = 2
@@ -117,34 +117,29 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="ReadyLabel" type="Label" parent="HBoxContainer"]
+[node name="ReadyLabel" parent="StatusRow" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_right = 0.0
+margin_left = 0.0
 margin_right = 210.0
-margin_bottom = 61.0
-grow_horizontal = 2
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 5 )
 text = "Ready"
-align = 1
 
-[node name="StudyLabel" type="Label" parent="HBoxContainer"]
+[node name="StudyLabel" parent="StatusRow" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_right = 0.0
 margin_left = 260.0
 margin_right = 471.0
-margin_bottom = 61.0
-grow_horizontal = 2
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 5 )
 text = "Study"
-align = 1
 
-[node name="DrawLabel" type="Label" parent="HBoxContainer"]
+[node name="DrawLabel" parent="StatusRow" instance=ExtResource( 5 )]
+anchor_left = 0.0
+anchor_right = 0.0
 margin_left = 521.0
 margin_right = 732.0
-margin_bottom = 61.0
-grow_horizontal = 2
 size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 5 )
 text = "Draw"
-align = 1
 [connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/PauseButton" to="." method="_on_PauseButton_pressed"]
 [connection signal="pressed" from="VBoxContainer/CancelButton" to="." method="_on_CancelButton_pressed"]
