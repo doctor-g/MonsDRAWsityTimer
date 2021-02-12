@@ -22,6 +22,9 @@ onready var _ready_label := $StatusRow/ReadyLabel
 onready var _study_label := $StatusRow/StudyLabel
 onready var _draw_label := $StatusRow/DrawLabel
 
+onready var _start_sound := $StartSound
+onready var _alarm_sound := $AlarmSound
+
 
 func _ready():
 	_ready_label.focus = true
@@ -30,6 +33,7 @@ func _ready():
 	
 
 func _on_StartButton_pressed():
+	_start_sound.play()
 	_start_button.disabled = true
 	_cancel_button.disabled = false
 	_pause_button.disabled = false
@@ -55,7 +59,7 @@ func _update_time_remaining_label()->void:
 func _on_Timer_timeout():
 	self._seconds_remaining -= 1
 	if _seconds_remaining == 0:
-		_beepPlayer.play()
+		_alarm_sound.play()
 		match _state:
 			State.STUDY:
 				self._seconds_remaining = draw_duration
@@ -73,6 +77,7 @@ func _on_Timer_timeout():
 
 
 func _on_CancelButton_pressed():
+	_start_sound.play()
 	self._seconds_remaining = study_duration
 	_timer.stop()
 	_start_button.disabled = false
