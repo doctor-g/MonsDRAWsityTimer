@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/sfx/tweety_cowbell.wav" type="AudioStream" id=1]
 [ext_resource path="res://src/MainScene.gd" type="Script" id=2]
@@ -30,7 +30,17 @@ outline_color = Color( 0.321569, 0.721569, 0.298039, 1 )
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 0.992157, 0.607843, 0.00392157, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.721569, 0.337255, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.427451, 0.345098, 0.427451, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.878431, 0.509804, 0.0666667, 1 )
 
 [node name="MainScene" type="Control"]
 anchor_right = 1.0
@@ -132,7 +142,10 @@ margin_right = 112.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_styles/normal = SubResource( 3 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
 custom_fonts/font = ExtResource( 4 )
 text = "Start"
 
@@ -142,7 +155,10 @@ margin_right = 112.0
 margin_bottom = 103.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_styles/normal = SubResource( 3 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
 custom_fonts/font = ExtResource( 4 )
 disabled = true
 toggle_mode = true
@@ -154,7 +170,10 @@ margin_right = 112.0
 margin_bottom = 162.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_styles/normal = SubResource( 3 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/disabled = SubResource( 6 )
+custom_styles/normal = SubResource( 4 )
 custom_fonts/font = ExtResource( 4 )
 disabled = true
 text = "Cancel"
