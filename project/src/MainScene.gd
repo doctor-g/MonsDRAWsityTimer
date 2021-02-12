@@ -13,7 +13,6 @@ var _state = State.NONE
 onready var _start_button := $VBoxContainer/StartButton
 onready var _timer := $Timer
 onready var _time_remaining_label := $TimeRemaining
-onready var _beepPlayer := $AudioStreamPlayer
 onready var _cancel_button := $VBoxContainer/CancelButton
 onready var _pause_button := $VBoxContainer/PauseButton
 onready var _animation_player := $AnimationPlayer
