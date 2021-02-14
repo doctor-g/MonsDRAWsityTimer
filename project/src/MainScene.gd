@@ -82,6 +82,9 @@ func _on_CancelButton_pressed():
 	_start_button.disabled = false
 	_cancel_button.disabled = true
 	_pause_button.disabled = true
+	_ready_label.focus = true
+	_study_label.focus = false
+	_draw_label.focus = false
 	if _timer.paused:
 		_pause_button.pressed = false
 		_stop_blink_animation()
