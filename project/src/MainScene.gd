@@ -82,7 +82,9 @@ func _on_CancelButton_pressed():
 	_start_button.disabled = false
 	_cancel_button.disabled = true
 	_pause_button.disabled = true
-	_stop_blink_animation()
+	if _timer.paused:
+		_pause_button.pressed = false
+		_stop_blink_animation()
 
 
 func _on_PauseButton_pressed():

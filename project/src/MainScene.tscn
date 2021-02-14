@@ -78,7 +78,6 @@ anchor_left = 0.0
 anchor_right = 0.0
 margin_left = 0.0
 margin_right = 412.0
-rect_scale = Vector2( 1, 1 )
 size_flags_horizontal = 3
 text = "Ready"
 
@@ -89,7 +88,6 @@ margin_left = 0.0
 margin_top = 71.0
 margin_right = 412.0
 margin_bottom = 132.0
-rect_scale = Vector2( 1, 1 )
 size_flags_horizontal = 3
 text = "Study"
 
@@ -100,7 +98,6 @@ margin_left = 0.0
 margin_top = 142.0
 margin_right = 412.0
 margin_bottom = 203.0
-rect_scale = Vector2( 1, 1 )
 size_flags_horizontal = 3
 text = "Draw"
 

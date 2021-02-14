@@ -42,6 +42,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [ Vector2( 1, 1 ), Vector2( 1.2, 1.2 ) ]
 }
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:custom_colors/font_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0.321569, 0.721569, 0.298039, 1 ) ]
+}
 
 [node name="AnimatedLabel" type="Label"]
 anchor_left = 0.5
@@ -51,9 +63,8 @@ margin_right = -270.0
 margin_bottom = 61.0
 grow_horizontal = 2
 grow_vertical = 2
-rect_scale = Vector2( 1.2, 1.2 )
 custom_fonts/font = ExtResource( 1 )
-custom_colors/font_color = Color( 0.321569, 0.721569, 0.298039, 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_outline_modulate = Color( 0.596078, 0.286275, 0.596078, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_constants/shadow_offset_x = 0
@@ -62,6 +73,7 @@ text = "Text"
 align = 1
 script = ExtResource( 2 )
 __meta__ = {
+"_edit_lock_": true,
 "_edit_use_anchors_": false
 }
 
