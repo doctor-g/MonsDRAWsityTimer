@@ -97,3 +97,7 @@ func _on_PauseButton_pressed():
 func _stop_blink_animation():
 	_animation_player.seek(0, true)
 	_animation_player.stop()
+
+
+func _on_FullscreenButton_pressed():
+	OS.window_fullscreen = not OS.window_fullscreen
