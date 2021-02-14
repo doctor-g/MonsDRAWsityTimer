@@ -30,16 +30,16 @@ outline_color = Color( 0.321569, 0.721569, 0.298039, 1 )
 use_filter = true
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxFlat" id=5]
+[sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.992157, 0.607843, 0.00392157, 1 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=4]
 bg_color = Color( 0.721569, 0.337255, 0, 1 )
 
-[sub_resource type="StyleBoxFlat" id=6]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.427451, 0.345098, 0.427451, 1 )
 
-[sub_resource type="StyleBoxFlat" id=4]
+[sub_resource type="StyleBoxFlat" id=6]
 bg_color = Color( 0.878431, 0.509804, 0.0666667, 1 )
 
 [node name="MainScene" type="Control"]
@@ -50,9 +50,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 731.0
-margin_bottom = 414.0
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true,
+"_edit_use_anchors_": false
+}
 
 [node name="StartSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
@@ -73,7 +77,7 @@ __meta__ = {
 anchor_left = 0.0
 anchor_right = 0.0
 margin_left = 0.0
-margin_right = 210.0
+margin_right = 136.0
 rect_scale = Vector2( 1, 1 )
 size_flags_horizontal = 3
 text = "Ready"
@@ -81,8 +85,8 @@ text = "Ready"
 [node name="StudyLabel" parent="StatusRow" instance=ExtResource( 5 )]
 anchor_left = 0.0
 anchor_right = 0.0
-margin_left = 260.0
-margin_right = 471.0
+margin_left = 186.0
+margin_right = 314.0
 rect_scale = Vector2( 1, 1 )
 size_flags_horizontal = 3
 text = "Study"
@@ -90,8 +94,8 @@ text = "Study"
 [node name="DrawLabel" parent="StatusRow" instance=ExtResource( 5 )]
 anchor_left = 0.0
 anchor_right = 0.0
-margin_left = 521.0
-margin_right = 732.0
+margin_left = 364.0
+margin_right = 476.0
 rect_scale = Vector2( 1, 1 )
 size_flags_horizontal = 3
 text = "Draw"
@@ -142,10 +146,10 @@ margin_right = 112.0
 margin_bottom = 44.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 4 )
 text = "Start"
 
@@ -155,10 +159,10 @@ margin_right = 112.0
 margin_bottom = 103.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 4 )
 disabled = true
 toggle_mode = true
@@ -170,10 +174,10 @@ margin_right = 112.0
 margin_bottom = 162.0
 size_flags_horizontal = 3
 size_flags_vertical = 6
-custom_styles/hover = SubResource( 5 )
-custom_styles/pressed = SubResource( 3 )
-custom_styles/disabled = SubResource( 6 )
-custom_styles/normal = SubResource( 4 )
+custom_styles/hover = SubResource( 3 )
+custom_styles/pressed = SubResource( 4 )
+custom_styles/disabled = SubResource( 5 )
+custom_styles/normal = SubResource( 6 )
 custom_fonts/font = ExtResource( 4 )
 disabled = true
 text = "Cancel"
