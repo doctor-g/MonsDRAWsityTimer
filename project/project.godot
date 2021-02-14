@@ -24,10 +24,6 @@ config/name="MonsDRAWsityTimer"
 run/main_scene="res://src/MainScene.tscn"
 config/icon="res://icon.png"
 
-[audio]
-
-output_latency.web=15
-
 [debug]
 
 gdscript/warnings/integer_division=false
