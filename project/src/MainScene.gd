@@ -11,6 +11,7 @@ var _seconds_remaining : int = 0 setget _set_seconds_remaining
 var _state = State.NONE
 
 onready var _start_button := $VBoxContainer/StartButton
+onready var _fullscreen_button := $VBoxContainer/FullscreenButton
 onready var _timer := $Timer
 onready var _time_remaining_label := $TimeRemaining
 onready var _cancel_button := $VBoxContainer/CancelButton
@@ -26,6 +27,10 @@ onready var _alarm_sound := $AlarmSound
 
 
 func _ready():
+	# Do not show the fullscreen button on Android
+	_fullscreen_button.visible = (OS.get_name() != "Android")
+	
+	# Configure the rest of the application
 	_ready_label.focus = true
 	_seconds_remaining = study_duration
 	_update_time_remaining_label()
