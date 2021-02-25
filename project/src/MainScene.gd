@@ -6,7 +6,8 @@ enum State {
 
 export var study_duration := 20
 export var draw_duration := 120
-export var tick_times = [60, 30, 10, 5, 4, 3, 2 ,1]
+export var double_tick_times = [60, 30]
+export var single_tick_times = [5,4,3,2,1]
 
 var _seconds_remaining : int = 0 setget _set_seconds_remaining
 var _state = State.NONE
@@ -26,6 +27,7 @@ onready var _draw_label := $StatusRow/DrawLabel
 onready var _start_sound := $StartSound
 onready var _alarm_sound := $AlarmSound
 onready var _tick_sound := $TickSound
+onready var _double_tick_sound := $DoubleTickSound
 
 
 func _ready():
@@ -65,8 +67,11 @@ func _update_time_remaining_label()->void:
 func _on_Timer_timeout():
 	self._seconds_remaining -= 1
 	
-	if _state == State.DRAW and tick_times.has(_seconds_remaining):
-		_tick_sound.play()
+	if _state == State.DRAW:
+		if single_tick_times.has(_seconds_remaining):
+			_tick_sound.play()
+		elif double_tick_times.has(_seconds_remaining):
+			_double_tick_sound.play()
 	
 	if _seconds_remaining == 0:
 		_alarm_sound.play()
